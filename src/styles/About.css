@@ -1,5 +1,7 @@
 .about-section {
     background-color: var(--bg-dark-secondary);
+    overflow: hidden;
+    /* Prevent scrollbar during animation */
 }
 
 .about-container {
@@ -11,6 +13,27 @@
 .about-image {
     flex: 1;
     position: relative;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s ease-out;
+}
+
+.about-content {
+    flex: 1;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 1s ease-out;
+}
+
+/* Visibility State Triggers */
+.about-container.visible .about-image {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.about-container.visible .about-content {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .img-placeholder {
@@ -28,10 +51,6 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(45deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2));
-}
-
-.about-content {
-    flex: 1;
 }
 
 .section-title {
@@ -63,7 +82,6 @@
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    /* Specific size for icons */
     gap: 1.5rem;
     margin-top: 2rem;
 }
@@ -74,28 +92,51 @@
     border-radius: var(--radius-md);
     text-align: center;
     font-weight: 600;
-    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
     aspect-ratio: 1/1;
     font-size: 2rem;
-    /* Initial icon size base */
     color: var(--text-secondary);
+
+    /* Initial hidden state for staggered animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.about-container.visible .skill-item {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .skill-item:hover {
     transform: translateY(-5px);
+    /* Override transform but keeping translateY base 0 */
     border-color: var(--primary-color);
     background: rgba(139, 92, 246, 0.1);
     color: var(--primary-color);
     box-shadow: 0 5px 15px rgba(139, 92, 246, 0.2);
 }
 
+/* Ensure hover effect works after animation */
+.about-container.visible .skill-item:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
 @media (max-width: 768px) {
     .about-container {
         flex-direction: column;
         gap: 2rem;
+    }
+
+    .about-image {
+        transform: translateY(30px);
+        /* Slide up on mobile instead of side */
+    }
+
+    .about-content {
+        transform: translateY(30px);
     }
 }

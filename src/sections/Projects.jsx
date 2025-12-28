@@ -1,44 +1,56 @@
 import '../styles/Projects.css';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import peerwireImg from '../assets/peerwire.png';
+import animecodexImg from '../assets/animecodex.png';
+import nebulasoundImg from '../assets/nebulasound.png';
 
 const Projects = () => {
+    const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
+
     const projects = [
         {
             id: 1,
-            title: "Project One",
-            desc: "A web application built with React and Node.js.",
-            tags: ["React", "Node", "MongoDB"],
-            image: "", // Placeholder
+            title: "Nebula Sound AI",
+            desc: "AI-powered music recommendation system leveraging machine learning to curate personalized playlists and discover new artists.",
+            tags: ["Python", "AI/ML", "Data Science"],
+            image: nebulasoundImg,
             demo: "#",
-            code: "#"
+            code: "https://github.com/Minesto23/Nebula-Sound-AI-Music-Recommender"
         },
         {
             id: 2,
-            title: "Project Two",
-            desc: "E-commerce platform with real-time features.",
-            tags: ["Next.js", "Stripe", "Tailwind"],
-            image: "",
+            title: "Peerwire",
+            desc: "A robust BitTorrent client implementation built from scratch, featuring support for multi-tracker announcements and peer-to-peer data exchange.",
+            tags: ["Go", "Networking", "P2P Protocol"],
+            image: peerwireImg,
             demo: "#",
-            code: "#"
+            code: "https://github.com/Minesto23/peerwire"
         },
         {
             id: 3,
-            title: "Project Three",
-            desc: "Portfolio website template.",
-            tags: ["HTML", "CSS", "JS"],
-            image: "",
+            title: "Anime Codex",
+            desc: "Comprehensive anime discovery and recommendation platform. Features a modern UI for browsing titles and managing watchlists.",
+            tags: ["React", "Python", "Fullstack"],
+            image: animecodexImg,
             demo: "#",
-            code: "#"
+            code: "https://github.com/Minesto23/Anime-Codex"
         }
     ];
 
     return (
-        <section id="projects" className="section projects-section">
+        <section id="projects" className="section projects-section" ref={ref}>
             <div className="container">
                 <h2 className="section-title">My Projects</h2>
-                <div className="projects-grid">
-                    {projects.map(project => (
-                        <div key={project.id} className="project-card">
-                            <div className="project-img"></div>
+                <div className={`projects-grid ${isVisible ? 'visible' : ''}`}>
+                    {projects.map((project, index) => (
+                        <div key={project.id} className="project-card" style={{ transitionDelay: `${index * 200}ms` }}>
+                            <div className="project-img-wrapper">
+                                {project.image ? (
+                                    <img src={project.image} alt={project.title} className="project-img" />
+                                ) : (
+                                    <div className="project-img-placeholder"></div>
+                                )}
+                            </div>
                             <div className="project-content">
                                 <h3 className="project-title">{project.title}</h3>
                                 <p className="project-desc">{project.desc}</p>

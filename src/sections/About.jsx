@@ -1,6 +1,9 @@
 import '../styles/About.css';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const About = () => {
+    const [ref, isVisible] = useIntersectionObserver({ threshold: 0.2 });
+
     const skills = [
         { name: "Python", icon: "devicon-python-plain" },
         { name: "Django", icon: "devicon-django-plain" },
@@ -15,14 +18,14 @@ const About = () => {
     ];
 
     return (
-        <section id="about" className="section about-section">
-            <div className="container about-container">
-                <div className="about-image">
+        <section id="about" className="section about-section" ref={ref}>
+            <div className={`container about-container ${isVisible ? 'visible' : ''}`}>
+                <div className="about-image hidden-left">
                     <div className="img-placeholder">
                         <img src="/src/assets/profile.jpg" alt="Miguel Morales" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '1rem' }} />
                     </div>
                 </div>
-                <div className="about-content">
+                <div className="about-content hidden-right">
                     <h2 className="section-title">About Me</h2>
                     <p className="about-text">
                         A proficient Software Engineer with a BSc in Software Engineering and substantial experience
@@ -36,8 +39,8 @@ const About = () => {
                     </p>
 
                     <div className="skills-grid">
-                        {skills.map(skill => (
-                            <div key={skill.name} className="skill-item" title={skill.name}>
+                        {skills.map((skill, index) => (
+                            <div key={skill.name} className="skill-item" title={skill.name} style={{ transitionDelay: `${index * 50}ms` }}>
                                 <i className={skill.icon} style={{ fontSize: '2.5rem' }}></i>
                             </div>
                         ))}

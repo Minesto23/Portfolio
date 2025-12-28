@@ -1,5 +1,6 @@
 .experience-section {
     background-color: var(--bg-color);
+    overflow: hidden;
 }
 
 .timeline {
@@ -26,14 +27,24 @@
     background-color: inherit;
     width: 50%;
     box-sizing: border-box;
+    opacity: 0;
+    transition: all 0.8s ease-out;
 }
 
 .timeline-item.left {
     left: 0;
+    transform: translateX(-50px);
 }
 
 .timeline-item.right {
     left: 50%;
+    transform: translateX(50px);
+}
+
+/* Animation triggered by visibly class on container */
+.timeline.visible .timeline-item {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .timeline-item::after {
@@ -67,6 +78,9 @@
     border-color: var(--primary-color);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
+
+/* Ensure hover doesn't conflict with exit animation if we had one, but we only have entrance. 
+   Keeping hover transform. */
 
 .role {
     font-size: 1.25rem;
@@ -104,6 +118,8 @@
         width: 100%;
         padding-left: 70px;
         padding-right: 25px;
+        transform: translateY(30px);
+        /* Vertical slide for mobile */
     }
 
     .timeline-item.left,
@@ -117,5 +133,9 @@
 
     .timeline-item.right::after {
         left: 21px;
+    }
+
+    .timeline.visible .timeline-item {
+        transform: translateY(0);
     }
 }

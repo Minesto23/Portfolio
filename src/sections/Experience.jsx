@@ -1,6 +1,9 @@
 import '../styles/Experience.css';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const Experience = () => {
+    const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
+
     const experiences = [
         {
             id: 1,
@@ -19,12 +22,12 @@ const Experience = () => {
     ];
 
     return (
-        <section id="experience" className="section experience-section">
+        <section id="experience" className="section experience-section" ref={ref}>
             <div className="container">
                 <h2 className="section-title">Experience</h2>
-                <div className="timeline">
+                <div className={`timeline ${isVisible ? 'visible' : ''}`}>
                     {experiences.map((exp, index) => (
-                        <div key={exp.id} className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
+                        <div key={exp.id} className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`} style={{ transitionDelay: `${index * 200}ms` }}>
                             <div className="timeline-content">
                                 <h3 className="role">{exp.role}</h3>
                                 <h4 className="company">{exp.company}</h4>

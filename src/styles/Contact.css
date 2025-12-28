@@ -1,12 +1,23 @@
 .contact-section {
     background-color: var(--bg-dark-secondary);
     position: relative;
+    overflow: hidden;
 }
 
 .contact-container {
     display: flex;
     justify-content: space-between;
     gap: 4rem;
+
+    /* Initial hidden state for animation */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.contact-container.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .contact-info {
@@ -52,6 +63,12 @@
     padding: 2.5rem;
     border-radius: var(--radius-lg);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.contact-form-wrapper:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
 }
 
 .form-group {
@@ -87,6 +104,7 @@
 .form-textarea {
     min-height: 150px;
     resize: vertical;
+    /* User preference might be vertical only */
 }
 
 .submit-btn {
