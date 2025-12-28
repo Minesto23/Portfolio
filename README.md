@@ -1,16 +1,63 @@
-# React + Vite
+# Portfolio V2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio v2, a modern, responsive, and interactive showcase of my work and skills as a Full Stack Developer. Built with React and Vite, this project emphasizes performance, aesthetics, and smooth user experiences.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   **Modern Design**: Sleek dark theme with violet/cyan accents and glassmorphism elements.
+-   **Interactive UI**: Smooth scroll-reveal animations and hover effects throughout the application.
+-   **Hero Section**: Dynamic typing effect and pulsing visual elements.
+-   **Experience Timeline**: Vertical timeline component to showcase professional history.
+-   **Project Showcase**: Responsive grid layout for projects with staggered entrance animations.
+-   **Functional Contact**: Integrated contact form that handles message composition via `mailto`.
+-   **Responsive**: Fully optimized for desktop, tablet, and mobile devices.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-   **Frontend**: [React](https://react.dev/)
+-   **Build Tool**: [Vite](https://vitejs.dev/)
+-   **Styling**: Vanilla CSS (Variables, Flexbox/Grid, Animations)
+-   **Icons**: [Devicon](https://devicon.dev/) for tech stack logos.
 
-## Expanding the ESLint configuration
+## 🔧 Installation & Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/Minesto23/Portfolio.git
+    cd Portfolio
+    ```
+
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Run the development server**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Build for production**
+    ```bash
+    npm run build
+    ```
+
+## 📁 Project Structure
+
+```
+src/
+├── assets/         # Images and static assets
+├── components/     # Reusable UI components (Navbar, Footer)
+├── hooks/          # Custom React hooks (useIntersectionObserver)
+├── sections/       # Page sections (Home, About, Experience, Projects, Contact)
+├── styles/         # CSS files for global styles and individual components
+├── App.jsx         # Main application component
+└── main.jsx        # Entry point
+```
+
+## 👤 Author
+
+**Miguel Morales (Minesto)**
+-   GitHub: [@Minesto23](https://github.com/Minesto23)
+-   LinkedIn: [Miguel Morales](https://www.linkedin.com/in/miguel-morales-6a36511a5/)
+-   Email: minestopro@gmail.com
