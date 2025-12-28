@@ -1,0 +1,188 @@
+.home-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    text-align: center;
+}
+
+.home-content {
+    flex: 1;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Base Typing Style */
+.typing-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    /* Fix alignment issues */
+}
+
+.typing-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid transparent;
+    /* Hidden initially */
+    width: 0;
+    font-family: monospace, var(--font-main);
+    /* Monospace helps typing alignment */
+    font-weight: inherit;
+    color: inherit;
+}
+
+/* Animations */
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--secondary-color)
+    }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sequential Delays */
+/* 1. REMOVED (Welcome Text) */
+
+/* 2. Hi, I'm Miguel Morales */
+.type-2 {
+    font-size: 4rem;
+    /* Match hero-title size */
+    font-weight: 700;
+    animation:
+        typing 2.5s steps(30, end) forwards 0.5s,
+        /* Start soon */
+        blink-caret 0.75s step-end 4 0.5s;
+    /* 4 blinks ~3s starting at 0.5s */
+}
+
+/* 3. aka Minesto */
+.type-3 {
+    /* Font size set inline/in jsx but base is inherit */
+    animation:
+        typing 1.5s steps(20, end) forwards 3s,
+        /* Start after type-2 (0.5 + 2.5 = 3s) */
+        blink-caret 0.75s step-end 3 3s;
+    /* 3 blinks ~2.25s starting at 3s */
+}
+
+/* 4. Software Engineer */
+.type-4 {
+    font-size: 4rem;
+    font-weight: 700;
+    animation:
+        typing 2s steps(25, end) forwards 4.5s,
+        /* Start after type-3 (3s + 1.5s = 4.5s) */
+        blink-caret 0.75s step-end 3 4.5s;
+    /* 3 blinks ~2.25s starting at 4.5s */
+}
+
+/* Description & Buttons Fade In */
+.description-wrapper {
+    margin-top: 1.5rem;
+    overflow: visible;
+    /* Override base wrapper */
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 600px;
+}
+
+.fade-in-text {
+    opacity: 0;
+    animation: fade-in-up 1s ease forwards 6.5s;
+    /* Start after all typing (4.5s + 2s = 6.5s) */
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.fade-in-buttons {
+    opacity: 0;
+    animation: fade-in-up 1s ease forwards 7s;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
+}
+
+.btn-primary:hover {
+    background: #7c3aed;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+}
+
+.btn-outline {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background: rgba(139, 92, 246, 0.1);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+
+    .type-2,
+    .type-4 {
+        font-size: 2.2rem;
+        /* Responsive sizing */
+    }
+}
