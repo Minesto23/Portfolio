@@ -1,5 +1,7 @@
 import '../styles/About.css';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
+import profileImg from '../assets/profile.jpg';
+import resumePdf from '../assets/resume.pdf';
 
 const About = () => {
     const [ref, isVisible] = useIntersectionObserver({ threshold: 0.2 });
@@ -22,7 +24,7 @@ const About = () => {
             <div className={`container about-container ${isVisible ? 'visible' : ''}`}>
                 <div className="about-image hidden-left">
                     <div className="img-placeholder">
-                        <img src="/src/assets/profile.jpg" alt="Miguel Morales" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '1rem' }} />
+                        <img src={profileImg} alt="Miguel Morales" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '1rem' }} />
                     </div>
                 </div>
                 <div className="about-content hidden-right">
@@ -47,7 +49,7 @@ const About = () => {
                     </div>
 
                     <div style={{ marginTop: '2rem' }}>
-                        <a href="/src/assets/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                        <a href={resumePdf} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                             Download Resume
                         </a>
                     </div>
